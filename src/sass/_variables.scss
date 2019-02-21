@@ -1,0 +1,25 @@
+
+@font-face {
+font-family: 'archer';
+src: url(../fonts/Archer-Medium.woff);
+}
+
+@font-face {
+font-family: 'gotham';
+src: url(../fonts/GothamMedium.ttf);
+}
+@font-face {
+font-family: 'gothambook';
+src: url(../fonts/GothamBook.ttf);
+}
+
+@font-face {
+font-family: 'roboto';
+src: url(../fonts/Roboto-Regular.ttf);
+}
+
+//fonts
+$gotham: 'gotham'; 
+$archer: 'archer';
+$roboto: 'roboto';
+$gothambook: 'gothambook';
