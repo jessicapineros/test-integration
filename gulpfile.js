@@ -5,7 +5,6 @@ const gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin');
     sass = require('gulp-sass');
-
     sass.compiler = require('node-sass');
 
 
@@ -22,7 +21,6 @@ gulp.task('min', async function () {
         .pipe(uglify())
         .pipe(gulp.dest('./src/js/build/'))
 });
-
 
 //imgages
 gulp.task('img', async function () {
@@ -42,7 +40,6 @@ gulp.task('default', gulp.parallel('min', 'concat','sass', 'img'));
 
 
 gulp.task('watch', async function(){
- 
     gulp.watch('src/js/*.js', gulp.parallel('min', 'concat'));
     gulp.watch('src/css/*.css', gulp.parallel('sass'));
 });

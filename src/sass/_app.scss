@@ -362,7 +362,7 @@ nav{
       padding: 4rem;
       padding-top: 9rem;
       width: 310px;
-      height: 5100%;
+      height: 100%;
       float: right;
       top: 0;
     }
@@ -424,12 +424,9 @@ nav{
   }
   //----slider----------
   .slider{
+    margin: 0 20px;
     .caption{
-      padding: 4rem;
-      padding-top: 9rem;
       width: 450px;
-      height: 5100%;
-      top: 0;
       h2{
         font-size: 1.875rem;
       }
