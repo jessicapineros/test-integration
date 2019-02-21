@@ -13,8 +13,8 @@ $('.slider').slick({
     speed: 500,
     fade: true,
     cssEase: 'linear',
-    autoplay: false,
-    autoplaySpeed: 5000,
+    autoplay: true,
+    autoplaySpeed: 4000,
     mobileFirst: true,
     pauseOnFocus: false,
     pauseOnHover: false
