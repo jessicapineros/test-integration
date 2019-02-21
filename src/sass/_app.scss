@@ -1,36 +1,36 @@
 body{
-  background-color: white;
+  background-color: $white;
   font-family: 'gotham', sans-serif;
   font-size: 1rem;
-  color: black;
+  color: $black;
   margin: 0;
 }
 h1{
-    @include font(2.254rem, 600, 1rem, black);
+    @include font(2.254rem, 600, 1rem, $black);
     font-family: $archer;
     text-align: center;
     span{
-      color: red;
+      color: $red;
     }
 }
 h2{
   font-family: $archer;
-  @include font(1.875rem, 600, 1.875rem, white);
+  @include font(1.875rem, 600, 1.875rem, $white);
 }
 h3{
   font-family: $roboto;
-  @include font(1.125rem, 400, 1.5rem, white);
+  @include font(1.125rem, 400, 1.5rem, $white);
 }
 a{
   text-decoration: none;
-  color: black;
+  color: $black;
   transition: 0.5s all;
   -webkit-transition: 0.5s all;
   -o-transition: 0.5s all;
   -moz-transition: 0.5s all;
   -ms-transition: 0.5s all;
   &:hover, &:active, &:focus{
-    color: red;
+    color: $red;
     text-decoration: none;
   }
 }
@@ -39,42 +39,68 @@ ul {
   margin: 0;
   padding: 0;
 }
-.btn-red{
-  background-color: red;
-  color: white;
-  border-radius: 0%;
-  &:hover{
-    color: white;
-    .bulle-info {
-        display: block;
-        opacity: 1;
-        visibility: visible;
-        top: 81px;
-        left: 1027px;
-        text-align: center;
-        z-index: 1;
-        width: 175px;
-      }
-  }
+
+
+.bulle-info{
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  //bottom: 72px;
+  top: 41px;
+  left: -37px;
+  background-color: $white;
+  width: 270px;
+  padding: 24px 24px;
+  box-shadow: 0 1px 25px rgba(0,0,0,0.1);
+  transition: opacity 0.5s;
+    &::before{
+      content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    margin-left: -5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: $white transparent transparent transparent;
+    }
 }
+
+
+
 .btn-border{
-  border-bottom: 1px solid red;
-  color: red;
+  border-bottom: 1px solid $red;
+  color: $red;
   padding: .5rem;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   border-radius: 0%;
   text-transform: uppercase;
   &:hover{
-    color: red;
+    color: $red;
   }
-  img{
-    fill: red;
+  &:focus{
+    box-shadow: none;
   }
+}
+.btn-border-img{
+  width: 18px;
 }
 .btn-social{
   padding: 5px 5px;
 }
+.block-flex{
+  display: flex;
+}
 
+//---Header-------
+header{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: flex-end;
+}
 .logo{
   width: 193px;
   height: 90px;
@@ -84,46 +110,37 @@ ul {
 .menu-y{
   display: none;
 }
-.navbar{
-  padding: 0.5 0;
-    li{
-      + li::before{
-        content: "-";
-        color: red;
-        margin: 0 7px;
-      }
-    }
+.btn-social{
+  &:first-child{
+    border-right: 1px solid $black;
   }
-header{
-  display: grid;
-  grid-template-columns: 50% 50%;
-  margin-top: 20px;
-  align-items: center;
-  justify-content: flex-end;
-  .btn-social{
-    &:first-child{
-      border-right: 1px solid black;
-    }
-    i{
-      padding: 13px 0px;
-    }
-  }
-  .burger{
-    img{
-      width: 2.5rem;
-    }
+  i{
+    padding: 13px 0px;
   }
 }
-.block-flex{
-  display: flex;
+.burger{
+  img{
+    width: 2.5rem;
+  }
+}
+.navbar{
+  padding: 0.5 0;
+  li{
+    + li::before{
+      content: "-";
+      color:$red;
+      margin: 0 7px;
+    }
+  }
 }
 .menu{
   display: none;
 }
+
 nav{
   grid-column-start: 1;
   grid-column-end: 4;
-  @include font(0.9375rem, 500, 1.5rem, black);
+  @include font(0.9375rem, 500, 1.5rem, $black);
   margin-top: 20px;
   .navbar{
     justify-content: flex-end;
@@ -148,7 +165,7 @@ nav{
           //text-align: left;
           &::before{
             content: "•|";
-            color: red;
+            color: $red;
             margin: 0 7px;
           }
         }    
@@ -156,6 +173,32 @@ nav{
     }
   }
 }
+
+
+
+.btn-red{
+  background-color: $red;
+  color: $white;
+  border-radius: 0%;
+}
+.btn-red:hover{
+    color: $white;
+    .bulle-info {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      top: 81px;
+      left: 1027px;
+      text-align: center;
+      z-index: 1;
+      width: 175px;
+    }
+  }
+  .btn-red:focus{
+    box-shadow: none;
+  }
+
+
 .menu-responsive{
   display: flex;
   justify-content: flex-end;
@@ -171,9 +214,9 @@ nav{
       height: 3.5rem;
       line-height: 3.5rem;
       &:hover{
-        background-color: red;
+        background-color: $red;
         a{
-          color: white;
+          color: $white;
           transition: 0s all;
           -webkit-transition: 0s all;
           -o-transition: 0s all;
@@ -185,36 +228,17 @@ nav{
   }
 }
 
-.bulle-info{
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  //bottom: 72px;
-  top: 41px;
-  left: -37px;
-  background-color: #fff;
-  width: 270px;
-  padding: 24px 24px;
-  box-shadow: 0 1px 25px rgba(0,0,0,0.1);
-  transition: opacity 0.5s;
-    &::before{
-      content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 100%;
-    margin-left: -5px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 10px 0 10px;
-    border-color: white transparent transparent transparent;
-    }
-}
+
+
+
+
+
+
 .slider{
   margin-bottom: 0 !important;
     .caption{
       padding: 1rem;
-      background-color: red;
+      background-color: $red;
       width: 100%;
       height: 115px;
       text-align: left;
@@ -235,12 +259,12 @@ nav{
       top: -37px;
       .silck-active{
         button::before{
-          color: white;
+          color: $white;
         }
       }
       button::before{
         font-size: 12px;
-        color: white;
+        color: $white;
       }
     }
     div{
@@ -257,13 +281,69 @@ nav{
     }
   }//end of slider
 
+  //------ programmation----------
   #programmation{
-    background-color: white;
-      top: 0px;
-      position: relative;
-      padding-top: 0px;
-      padding-bottom: 60px;
-    }
+  background-color: $white;
+  top: 0px;
+  position: relative;
+  padding-top: 0px;
+  padding-bottom: 60px;
+  .container{
+    padding: 0;
+    margin: 0;
+  }
+}
+.calendar{
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+.block-dates{
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 5px;
+}
+.btn-date{
+  background-color: $light-gray;
+  text-transform: uppercase;
+  display: flex;
+  a{
+    font-family: $roboto;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+  }
+}
+.previus{
+  border-bottom:  1px solid $black;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+.next{
+    border-top: 1px solid $black;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+}
+.btn-arrow{
+  width: 40px;
+  height: 20px;
+  //margin: 0 auto;
+}
+.btn-arrow-next{
+  background: url('../img/down.svg');
+  @include background(contain, no-repeat, center);
+}
+.btn-arrow-previus{
+  background: url('../img/up.svg');
+  @include background(contain, no-repeat, center);
+}
+//end of programmation
 
 
 /********************* TABLET & SMALLER LAPTOPS *********************/
@@ -289,7 +369,7 @@ nav{
 }
 .logo{
 
-  border-right: 1px solid black;
+  border-right: 1px solid $black;
 }
 .slider{
     div{
@@ -313,18 +393,38 @@ nav{
     }
   }
 
+  //------ programmation----------
   #programmation{
     top: -100px;
     padding-top: 30px;
   }
+ .calendar{
+   width: 50%;
+   margin: 0 auto;
+ }
+ //end of programmation
+
+
+
+
+
+
 
 } // end of media query
 
+
+@media only screen and (min-width: 992px) {
+
+body{
+  background-color: green;
+}
+} // end of media query
+
+
+
+
 /********************* DESKTOP *********************/
 @media only screen and (min-width: 1200px) {
-
-  
-
   header{
     grid-template-columns: 25% 75%;
     .burger{
@@ -357,9 +457,7 @@ nav{
         justify-content: flex-end;
       }
     }
-    .download-img{
-      width: 18px;
-    }
+    
   }
 
   .menu-responsive{
@@ -386,10 +484,50 @@ nav{
     }
     .slick-dots{
       top: -208px;
-padding-right: 216px;
+      padding-right: 216px;
     }
   }
 
-  
+
+  //------ programmation----------
+  .calendar{
+    grid-template-columns: 5% 66% 5% 22%;
+    column-gap: 10px;
+    width: 100%;
+    padding: 30px 0px 0px 60px;
+  }
+  .block-dates{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    column-gap: 10px;
+  }
+  .btn-date{
+    a{
+      font-size: 0.8rem;
+    }
+  }
+  .btn-arrow-next{
+      background: url('../img/next.svg');
+      @include background(contain, no-repeat, center);
+      border-bottom: 0px;
+    }
+  .btn-arrow-previus{
+    background: url('../img/previus.svg');
+    @include background(contain, no-repeat, center);
+    border-top: 0px;
+  }
+  .previus{
+    border-right:  1px solid $black;
+    margin-right: 22px;
+    border-bottom: 0px;
+    margin-bottom: 0px;
+    }
+  .next{
+    border-left:  1px solid $black;
+    margin-left: 22px;
+    border-top:  0px;
+    margin-top: 0px;
+  }
+  //end of programmation
 
 } // end of media query
